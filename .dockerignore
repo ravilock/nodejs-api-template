@@ -1,0 +1,11 @@
+/node_modules/
+Dockerfile
+docker-compose.override.yml
+README.mb
+.env.dist
+.env
+.git
+.gitignore
+.prettierignore
+.prettierrc
+.estlint.js
