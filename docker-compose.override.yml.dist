@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  app-name:
+    build: ./
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    networks:
+      - app-network
+    depends_on:
+      - postgres
+    entrypoint: entrypoint.sh
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_DB=${DATABASE_NAME}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - app-network
+    ports:
+      - "5432:5432"
+
+networks:
+  app-network:
+    external: true
+
+volumes:
+  postgres: ~
