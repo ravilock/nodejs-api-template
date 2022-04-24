@@ -1,9 +1,12 @@
 import * as http from 'http';
 import { Knex } from 'knex';
-import { App } from './App';
+import App from './App';
 import { publicRoutes } from './Routes/PublicRoutes';
+import { NextFunction, Request, Response } from 'express';
+import RouteNotFoundException from './Api/Exception/RouteNotFoundException';
+import errorMiddleware from './Api/Middleware/ErrorMiddleware';
 
-const GRACEFUL_SHUTDOWN_TIME = 63 * 1000; // Wait 63s
+const GRACEFUL_SHUTDOWN_TIME = 100 * 1000; // 100 seconds
 
 export class Server {
     protected port: number;
@@ -59,6 +62,10 @@ export class Server {
 
     private registerRouter(): void {
         this.application.app.use('/', publicRoutes);
+        this.application.app.use((req: Request, res: Response, next: NextFunction) => {
+            next(new RouteNotFoundException());
+        });
+        this.application.app.use(errorMiddleware);
         // TODO: add route not found exception and error middleware
     }
 
