@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { Server } from './Server';
-import { App } from './App';
+import App from './App';
 import { KnexInstance } from './Database/knex';
 
 async function start() {
