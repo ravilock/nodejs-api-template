@@ -1,6 +1,5 @@
 build:
-	docker-compose build &&\
-	docker-compose -f docker-compose.override.yml build
+	docker-compose build
 
 dev:
 	docker-compose up
