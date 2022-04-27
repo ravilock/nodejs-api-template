@@ -8,9 +8,9 @@ RUN yarn install
 
 COPY . ./
 
-COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod -R 777 /usr/local/bin/entrypoint.sh
+RUN chmod -R 777 entrypoint.sh
+RUN chmod -R 777 entrypoint-prod.sh
 
-RUN yarn clean && yarn build
+RUN yarn clean
 ENV PORT 3000
 EXPOSE $PORT
