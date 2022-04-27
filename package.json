@@ -9,7 +9,7 @@
         "build": "tsc",
         "debug": "ts-node-dev --inspect=0.0.0.0 --respawn --transpile-only src/Index.ts",
         "dev": "ts-node-dev --respawn --transpile-only src/Index.ts",
-        "start": "NODE_ENV=production node ./build/Index.js",
+        "start": "NODE_ENV=production node ./build/src/Index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "clean": "rm -rf build/*",
         "lint": "eslint . --ext .ts",
